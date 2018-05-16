@@ -1,0 +1,28 @@
+{
+    "name": "ger/fpbskeleton",
+    "type": "phpbb-extension",
+    "description": "Skeleton extension for extending the Feed Post Bot extension",
+    "homepage": "",
+    "version": "1.0.0",
+    "time": "2018-05-16",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Ger",
+            "email": "",
+            "homepage": "https://github.com/GerB",
+            "role": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "ext-simplexml" : "*"
+    },
+    "extra": {
+        "display-name": "Feed post bot Skeleton",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.2",
+            "ger/feedpostbot": ">=1.0.2"
+        }
+    }
+}

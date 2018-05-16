@@ -1,0 +1,5 @@
+services:
+    ger.fpbskeleton.listener:
+        class: ger\fpbskeleton\event\main_listener
+        tags:
+            - { name: event.listener }
