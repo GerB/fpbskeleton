@@ -26,6 +26,7 @@ class main_listener implements EventSubscriberInterface
             'ger.feedpostbot.parse_rdf_append'		=> 'append_rdf',
             'ger.feedpostbot.parse_rss_append'		=> 'append_rss',
             'ger.feedpostbot.submit_post_before'	=> 'change_post',
+            'ger.feedpostbot.html2bbcode_convert'	=> 'html2bbcode',
         );
     }
 	
@@ -151,4 +152,18 @@ class main_listener implements EventSubscriberInterface
 		$event['data'] = $data;
 	}
 	
+    /**
+	 * Expand on html2bbocde conversion
+	 * @param \phpbb\event\data $event The event object
+	 */	
+    public function html2bbcode($event)
+    {
+        $convert = $event['convert'];
+       
+        $prepend = ["/\<div(.*?)class='myPrecious'(.*?)\>(.*?)\<\/div\>/is" => "[gollum]$3[/gollum]"];
+        $append = ["/\<hr(.*?)\>(.*?)\<\/hr\>/is" => "[hr]$2[/hr]"];
+            
+        // Wrap it up        
+        $event['convert'] = array_merge($prepend, $convert, $append);
+    }
 }
